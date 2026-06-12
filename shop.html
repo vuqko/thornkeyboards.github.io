@@ -7,55 +7,77 @@
 
 <body>
 
+<div class="wrapper">
+
 <div class="sidebar">
-  <a href="index.html">Home</a>
-  <a>Trending ▼</a>
-  <a>Newest</a>
-  <a>Price Low → High</a>
-  <a>Price High → Low</a>
+  <h2>Categories</h2>
+  <button onclick="filter('all')">All</button>
+  <button onclick="filter('rgb')">RGB</button>
+  <button onclick="filter('silent')">Silent</button>
+  <button onclick="filter('pro')">Pro</button>
 </div>
 
 <div class="main">
 
-<h2>Browse Keyboards</h2>
+<h2>All Keyboards</h2>
 
-<div class="filters">
-  <button>Trending</button>
-  <button>Newest</button>
-  <button>Low → High</button>
-  <button>High → Low</button>
-</div>
+<div class="grid" id="grid">
 
-<div class="grid">
-
-<a class="card" href="product.html?id=1">
+<a class="card" data-type="rgb" href="product.html?id=1">
 <img src="https://images.unsplash.com/photo-1595044426077-d36d9236d54a">
-<p>RGB Pro X</p>
+<p>RGB Pro X</p><p>$120</p>
 </a>
 
-<a class="card" href="product.html?id=2">
+<a class="card" data-type="rgb" href="product.html?id=2">
 <img src="https://images.unsplash.com/photo-1629429408209-1f2b4b7b0f4f">
-<p>Strike Blue</p>
+<p>Strike Blue</p><p>$90</p>
 </a>
 
-<a class="card" href="product.html?id=3">
+<a class="card" data-type="silent" href="product.html?id=3">
 <img src="https://images.unsplash.com/photo-1612810806695-30f7c9c6b1a8">
-<p>Silent Red</p>
+<p>Silent Red</p><p>$75</p>
 </a>
 
-<a class="card" href="product.html?id=4">
+<a class="card" data-type="pro" href="product.html?id=4">
 <img src="https://images.unsplash.com/photo-1616788494686-4c7d3b8d1f63">
-<p>Black Pro</p>
+<p>Black Pro</p><p>$110</p>
 </a>
 
-<a class="card" href="product.html?id=5">
+<a class="card" data-type="rgb" href="product.html?id=5">
 <img src="https://images.unsplash.com/photo-1629429407815-0b7c9d4f2c88">
-<p>Neon Beast</p>
+<p>Neon Beast</p><p>$140</p>
+</a>
+
+<a class="card" data-type="rgb" href="product.html?id=6">
+<img src="https://images.unsplash.com/photo-1618354691373-d851c5c3c5b1">
+<p>Starter RGB</p><p>$60</p>
+</a>
+
+<a class="card" data-type="pro" href="product.html?id=7">
+<img src="https://images.unsplash.com/photo-1611078489935-0c1a1f0b4d9c">
+<p>Pro White</p><p>$100</p>
+</a>
+
+<a class="card" data-type="pro" href="product.html?id=8">
+<img src="https://images.unsplash.com/photo-1608043152269-423dbba4e7e1">
+<p>Elite Max</p><p>$160</p>
 </a>
 
 </div>
 
 </div>
+
+</div>
+
+<script>
+function filter(type){
+  const cards = document.querySelectorAll(".card");
+  cards.forEach(c=>{
+    if(type === "all") c.style.display="block";
+    else c.style.display = c.dataset.type === type ? "block" : "none";
+  });
+}
+</script>
 
 </body>
 </html>
