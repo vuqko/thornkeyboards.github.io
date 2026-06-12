@@ -5,7 +5,10 @@
   <link rel="stylesheet" href="style.css">
 
   <style>
-    * { transition: all 0.2s ease; }
+    * {
+      transition: all 0.2s ease;
+      box-sizing: border-box;
+    }
 
     body {
       margin: 0;
@@ -13,6 +16,7 @@
       background: white;
     }
 
+    /* HOME BUTTON */
     .home-btn {
       position: fixed;
       left: 20px;
@@ -25,6 +29,7 @@
       z-index: 1000;
     }
 
+    /* SEARCH */
     .search-bar {
       width: 60%;
       padding: 12px;
@@ -34,6 +39,7 @@
       border-radius: 10px;
     }
 
+    /* SORT */
     .top-actions {
       display: flex;
       justify-content: center;
@@ -53,6 +59,7 @@
       background: #d6d6d6;
     }
 
+    /* CART BUTTON */
     .cart-btn {
       position: fixed;
       right: 20px;
@@ -65,6 +72,7 @@
       z-index: 1000;
     }
 
+    /* CART PANEL */
     .cart {
       position: fixed;
       right: 0;
@@ -90,7 +98,7 @@
       border-radius: 10px;
     }
 
-    .cart-item button {
+    .remove-btn {
       margin-top: 5px;
       background: red;
       color: white;
@@ -100,6 +108,7 @@
       cursor: pointer;
     }
 
+    /* GRID */
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -115,7 +124,7 @@
       border-radius: 12px;
       overflow: hidden;
       text-align: center;
-      transition: 0.2s;
+      cursor: pointer;
     }
 
     .card:hover {
@@ -136,19 +145,24 @@
 
 <body>
 
+<!-- HOME -->
 <a href="index.html" class="home-btn">← Home</a>
 
+<!-- CART BUTTON -->
 <div class="cart-btn" onclick="toggleCart()">
   Cart 🛒 (<span id="count">0</span>)
 </div>
 
+<!-- CART -->
 <div class="cart" id="cart">
   <h2>Your Cart</h2>
   <div id="cartItems"></div>
 </div>
 
+<!-- SEARCH -->
 <input class="search-bar" id="search" placeholder="Search keyboards..." oninput="searchItems()">
 
+<!-- SORT -->
 <div class="top-actions">
   <button onclick="sortBy('trending')">Trending</button>
   <button onclick="sortBy('low')">Price Low</button>
@@ -157,61 +171,82 @@
 
 <h2 style="text-align:center;">All Keyboards</h2>
 
+<!-- GRID -->
 <div class="grid" id="grid">
 
-  <a class="card" data-price="120" href="product.html?id=1">
+  <div class="card" data-price="120" onclick="openProduct(1)">
     <img src="https://cdn.pixabay.com/photo/2017/08/05/10/16/keyboard-2589430_1280.jpg">
     <p>RGB Pro X</p>
     <p>$120</p>
-  </a>
+  </div>
 
-  <a class="card" data-price="90" href="product.html?id=2">
+  <div class="card" data-price="90" onclick="openProduct(2)">
     <img src="https://cdn.pixabay.com/photo/2016/11/29/03/53/keyboard-1869236_1280.jpg">
     <p>Strike Blue</p>
     <p>$90</p>
-  </a>
+  </div>
 
-  <a class="card" data-price="75" href="product.html?id=3">
+  <div class="card" data-price="75" onclick="openProduct(3)">
     <img src="https://cdn.pixabay.com/photo/2015/01/21/14/14/keyboard-606012_1280.jpg">
     <p>Silent Red</p>
     <p>$75</p>
-  </a>
+  </div>
 
-  <a class="card" data-price="110" href="product.html?id=4">
+  <div class="card" data-price="110" onclick="openProduct(4)">
     <img src="https://cdn.pixabay.com/photo/2016/03/27/19/36/keyboard-1280538_1280.jpg">
     <p>Black Pro</p>
     <p>$110</p>
-  </a>
+  </div>
 
-  <a class="card" data-price="140" href="product.html?id=5">
+  <div class="card" data-price="140" onclick="openProduct(5)">
     <img src="https://cdn.pixabay.com/photo/2017/08/10/03/47/keyboard-2619227_1280.jpg">
     <p>Neon Beast</p>
     <p>$140</p>
-  </a>
+  </div>
 
-  <a class="card" data-price="60" href="product.html?id=6">
+  <div class="card" data-price="60" onclick="openProduct(6)">
     <img src="https://cdn.pixabay.com/photo/2016/11/29/09/32/keyboard-1867893_1280.jpg">
     <p>Starter RGB</p>
     <p>$60</p>
-  </a>
+  </div>
 
-  <a class="card" data-price="100" href="product.html?id=7">
+  <div class="card" data-price="100" onclick="openProduct(7)">
     <img src="https://cdn.pixabay.com/photo/2015/05/31/10/55/keyboard-791219_1280.jpg">
     <p>Pro White</p>
     <p>$100</p>
-  </a>
+  </div>
 
-  <a class="card" data-price="160" href="product.html?id=8">
+  <div class="card" data-price="160" onclick="openProduct(8)">
     <img src="https://cdn.pixabay.com/photo/2016/10/18/21/22/keyboard-1756955_1280.jpg">
     <p>Elite Max</p>
     <p>$160</p>
-  </a>
+  </div>
 
 </div>
 
 <script>
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
+/* OPEN PRODUCT PAGE */
+function openProduct(id) {
+  window.location.href = "product.html?id=" + id;
+}
+
+/* ADD CART */
+function addToCart(name, price) {
+  cart.push({name, price});
+  localStorage.setItem("cart", JSON.stringify(cart));
+  updateCart();
+}
+
+/* REMOVE ITEM */
+function removeItem(index) {
+  cart.splice(index, 1);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  updateCart();
+}
+
+/* UPDATE CART */
 function updateCart() {
   document.getElementById("count").innerText = cart.length;
 
@@ -223,35 +258,30 @@ function updateCart() {
       <div class="cart-item">
         <b>${item.name}</b><br>
         ${item.price}
-        <button onclick="removeItem(${index})">Remove</button>
+        <button class="remove-btn" onclick="removeItem(${index})">
+          Remove
+        </button>
       </div>
     `;
   });
 }
 
-function addToCart(name, price) {
-  cart.push({name, price});
-  localStorage.setItem("cart", JSON.stringify(cart));
-  updateCart();
-}
-
-function removeItem(index) {
-  cart.splice(index, 1);
-  localStorage.setItem("cart", JSON.stringify(cart));
-  updateCart();
-}
-
+/* TOGGLE CART */
 function toggleCart() {
   document.getElementById("cart").classList.toggle("open");
 }
 
+/* SEARCH */
 function searchItems() {
-  let input = document.getElementById("search").value.toLowerCase();
+  let val = document.getElementById("search").value.toLowerCase();
   document.querySelectorAll(".card").forEach(c => {
-    c.style.display = c.innerText.toLowerCase().includes(input) ? "block" : "none";
+    c.style.display = c.innerText.toLowerCase().includes(val)
+      ? "block"
+      : "none";
   });
 }
 
+/* SORT */
 function sortBy(type) {
   let grid = document.getElementById("grid");
   let cards = Array.from(grid.children);
@@ -268,6 +298,7 @@ function getPrice(card) {
   return Number(card.dataset.price);
 }
 
+/* INIT */
 updateCart();
 </script>
 
