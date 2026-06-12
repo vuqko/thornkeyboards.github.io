@@ -1,43 +1,57 @@
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: Arial;
   background: #0f0f0f;
   color: white;
 }
 
-header {
-  text-align: center;
-  padding: 40px;
+/* NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
   background: #1a1a1a;
 }
 
-.container {
+/* HERO */
+.hero {
   display: flex;
-  justify-content: center;
   gap: 20px;
   padding: 40px;
+  align-items: center;
+}
+
+.hero img {
+  width: 300px;
+  border-radius: 10px;
+}
+
+/* SORT BAR */
+.sort-bar {
+  display: flex;
+  gap: 10px;
+  padding: 20px;
+  justify-content: center;
+}
+
+.sort-bar button {
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+/* PRODUCTS */
+.products {
+  display: flex;
   flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
 }
 
 .card {
   background: #222;
-  padding: 20px;
-  border-radius: 12px;
-  width: 220px;
-  transition: 0.3s;
-}
-
-.card:hover {
-  transform: scale(1.05);
-}
-
-button {
-  margin-top: 10px;
-  padding: 10px;
-  border: none;
-  cursor: pointer;
-  background: #00ff99;
-  color: black;
-  font-weight: bold;
-  border-radius: 6px;
+  padding: 15px;
+  width: 200px;
+  border-radius: 10px;
 }
