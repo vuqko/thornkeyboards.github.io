@@ -7,45 +7,22 @@
 
 <body>
 
-<!-- NAVBAR -->
-<div class="navbar">
+<!-- TOP BAR -->
+<div class="topbar">
   <div class="logo">Thorn Keyboards</div>
-
-  <div class="menu">
-    <button onclick="toggleMenu()">Browse ▾</button>
-
-    <div id="dropdown" class="dropdown">
-      <div onclick="filter('all')">All</div>
-      <div onclick="filter('hot')">Hot</div>
-      <div onclick="filter('new')">New</div>
-    </div>
-  </div>
+  <a class="browse" href="browse/">Browse</a>
 </div>
 
-<!-- HERO -->
-<div class="hero">
-  <img src="https://images.unsplash.com/photo-1587829741301-dc798b83add3" />
-  <div>
-    <h1>Custom Mechanical Keyboards</h1>
-    <p>Premium keyboards for gamers and creators.</p>
+<!-- HERO FULL SCREEN -->
+<section class="hero">
+
+  <div class="hero-text">
+    <h1>We make keyboards</h1>
+    <p>Premium mechanical keyboards built for performance and style.</p>
+    <a href="browse/" class="btn">Explore</a>
   </div>
-</div>
 
-<!-- HOT SECTION -->
-<h2 class="section-title">🔥 Hot</h2>
-
-<div id="grid" class="grid"></div>
-
-<!-- MODAL -->
-<div id="modal" class="modal" onclick="closeModal()">
-  <div class="modal-content" onclick="event.stopPropagation()">
-    <h2 id="mName"></h2>
-    <p id="mPrice"></p>
-    <p id="mDesc"></p>
-  </div>
-</div>
-
-<script src="app.js"></script>
+</section>
 
 </body>
 </html>
