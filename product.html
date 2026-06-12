@@ -1,1 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Product</title>
+  <link rel="stylesheet" href="style.css">
+</head>
 
+<body>
+
+<div class="main product" id="p"></div>
+
+<script>
+const products = {
+  1:{name:"RGB Pro X",img:"https://images.unsplash.com/photo-1595044426077-d36d9236d54a",desc:"RGB gaming keyboard",price:"$120"},
+  2:{name:"Strike Blue",img:"https://images.unsplash.com/photo-1629429408209-1f2b4b7b0f4f",desc:"Clicky switches",price:"$90"},
+  3:{name:"Silent Red",img:"https://images.unsplash.com/photo-1612810806695-30f7c9c6b1a8",desc:"Silent gaming keyboard",price:"$75"},
+  4:{name:"Black Pro",img:"https://images.unsplash.com/photo-1616788494686-4c7d3b8d1f63",desc:"Stealth design",price:"$110"},
+  5:{name:"Neon Beast",img:"https://images.unsplash.com/photo-1629429407815-0b7c9d4f2c88",desc:"RGB beast",price:"$140"}
+};
+
+const id = new URLSearchParams(location.search).get("id");
+const p = products[id];
+
+document.getElementById("p").innerHTML = `
+<img src="${p.img}">
+<div>
+<h1>${p.name}</h1>
+<p>${p.desc}</p>
+<h2>${p.price}</h2>
+<a href="shop.html">Back</a>
+</div>
+`;
+</script>
+
+</body>
+</html>
