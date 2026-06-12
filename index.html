@@ -7,26 +7,38 @@
 
 <body>
 
-  <header>
-    <h1>Thorn Keyboards</h1>
-    <p>Custom mechanical keyboards built for you</p>
-  </header>
-
-  <div class="container">
-
-    <div class="card">
-      <h2>Red Switch Keyboard</h2>
-      <p>Smooth + quiet typing</p>
-      <button>Order Now</button>
-    </div>
-
-    <div class="card">
-      <h2>Blue Switch Keyboard</h2>
-      <p>Clicky + satisfying feel</p>
-      <button>Order Now</button>
-    </div>
-
+<!-- NAVBAR -->
+<header class="navbar">
+  <h2>Thorn Keyboards</h2>
+  <div class="nav-links">
+    <a href="#">Browse</a>
   </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <img src="https://images.unsplash.com/photo-1587829741301-dc798b83add3" />
+  <div>
+    <h1>Custom Mechanical Keyboards</h1>
+    <p>
+      We design high-quality mechanical keyboards for gamers and creators.
+      Smooth switches, premium build, and clean design.
+    </p>
+  </div>
+</section>
+
+<!-- SORT BAR -->
+<section class="sort-bar">
+  <button onclick="sortProducts('newest')">Newest</button>
+  <button onclick="sortProducts('trending')">Trending</button>
+  <button onclick="sortProducts('low')">Price Low → High</button>
+  <button onclick="sortProducts('high')">Price High → Low</button>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products" class="products"></section>
+
+<script src="app.js"></script>
 
 </body>
 </html>
