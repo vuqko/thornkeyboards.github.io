@@ -1,11 +1,10 @@
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: Arial;
   background: white;
   color: black;
 }
 
-/* NAV */
 .topbar {
   display: flex;
   justify-content: center;
@@ -13,17 +12,16 @@ body {
   background: #f4f4f4;
 }
 
-.center-nav {
+.nav {
   display: flex;
   gap: 40px;
 }
 
-.center-nav a {
+.nav a {
   text-decoration: none;
   color: gray;
 }
 
-/* HERO */
 .hero {
   position: relative;
   height: 90vh;
@@ -46,7 +44,6 @@ body {
   border-radius: 12px;
 }
 
-/* BUTTON */
 .btn {
   display: inline-block;
   margin-top: 10px;
@@ -56,13 +53,15 @@ body {
   text-decoration: none;
 }
 
-/* ABOUT */
 .about {
   text-align: center;
   padding: 60px;
 }
 
-/* HOT ROW */
+.section-title {
+  text-align: center;
+}
+
 .hot-row {
   display: flex;
   justify-content: center;
@@ -82,39 +81,4 @@ body {
   height: 120px;
   object-fit: cover;
   border-radius: 10px;
-}
-
-/* GRID */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 15px;
-  padding: 20px;
-}
-
-.card {
-  text-align: center;
-  text-decoration: none;
-  color: black;
-}
-
-.card img {
-  width: 100%;
-  height: 120px;
-  object-fit: cover;
-  border-radius: 10px;
-}
-
-/* PRODUCT */
-.product-page {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 40px;
-  height: 80vh;
-}
-
-.product-page img {
-  width: 400px;
-  border-radius: 12px;
 }
