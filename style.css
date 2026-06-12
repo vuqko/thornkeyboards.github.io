@@ -1,3 +1,64 @@
+/* SMOOTH ANIMATIONS */
+* {
+  transition: all 0.25s ease;
+}
+
+/* FADE IN */
+.fade-in {
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* SEARCH BAR */
+.search-bar {
+  width: 60%;
+  padding: 12px;
+  margin: 20px auto;
+  display: block;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+}
+
+/* CART BUTTON */
+.cart-btn {
+  position: fixed;
+  right: 20px;
+  top: 20px;
+  background: black;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* CART PANEL */
+.cart {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 300px;
+  height: 100vh;
+  background: #f5f5f5;
+  padding: 20px;
+  display: none;
+  overflow-y: auto;
+}
+
+.cart h3 {
+  margin-top: 0;
+}
+
+.cart-item {
+  padding: 10px;
+  background: white;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+
 body {
   margin: 0;
   font-family: Arial, sans-serif;
