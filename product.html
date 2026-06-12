@@ -56,49 +56,49 @@ const products = {
   1: {
     name: "RGB Pro X",
     price: "$120",
-    img: "https://images.unsplash.com/photo-1595044426077-d36d9236d54a",
+    img: "https://cdn.pixabay.com/photo/2017/08/05/10/16/keyboard-2589430_1280.jpg",
     desc: "High-performance RGB mechanical gaming keyboard built for speed and accuracy."
   },
   2: {
     name: "Strike Blue",
     price: "$90",
-    img: "https://images.unsplash.com/photo-1629429408209-1f2b4b7b0f4f",
+    img: "https://cdn.pixabay.com/photo/2016/11/29/03/53/keyboard-1869236_1280.jpg",
     desc: "Clicky blue switches designed for responsive typing and gaming."
   },
   3: {
     name: "Silent Red",
     price: "$75",
-    img: "https://images.unsplash.com/photo-1612810806695-30f7c9c6b1a8",
+    img: "https://cdn.pixabay.com/photo/2015/01/21/14/14/keyboard-606012_1280.jpg",
     desc: "Ultra-quiet red switches for smooth and silent gameplay."
   },
   4: {
     name: "Black Pro",
     price: "$110",
-    img: "https://images.unsplash.com/photo-1616788494686-4c7d3b8d1f63",
+    img: "https://cdn.pixabay.com/photo/2016/03/27/19/36/keyboard-1280538_1280.jpg",
     desc: "Minimal black professional gaming keyboard with premium build."
   },
   5: {
     name: "Neon Beast",
     price: "$140",
-    img: "https://images.unsplash.com/photo-1629429407815-0b7c9d4f2c88",
+    img: "https://cdn.pixabay.com/photo/2017/08/10/03/47/keyboard-2619227_1280.jpg",
     desc: "Full RGB beast keyboard with extreme lighting effects."
   },
   6: {
     name: "Starter RGB",
     price: "$60",
-    img: "https://images.unsplash.com/photo-1618354691373-d851c5c3c5b1",
+    img: "https://cdn.pixabay.com/photo/2016/11/29/09/32/keyboard-1867893_1280.jpg",
     desc: "Budget-friendly RGB keyboard perfect for beginners."
   },
   7: {
     name: "Pro White",
     price: "$100",
-    img: "https://images.unsplash.com/photo-1611078489935-0c1a1f0b4d9c",
+    img: "https://cdn.pixabay.com/photo/2015/05/31/10/55/keyboard-791219_1280.jpg",
     desc: "Clean white RGB keyboard for aesthetic setups."
   },
   8: {
     name: "Elite Max",
     price: "$160",
-    img: "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1",
+    img: "https://cdn.pixabay.com/photo/2016/10/18/21/22/keyboard-1756955_1280.jpg",
     desc: "Top-tier esports keyboard built for competitive gaming."
   }
 };
@@ -113,11 +113,30 @@ document.getElementById("product").innerHTML = `
     <h1>${p.name}</h1>
     <p>${p.desc}</p>
     <div class="price">${p.price}</div>
-    
-    <a class="back" href="shop.html">Back to Shop</a>
+
+    <button onclick="addToCart('${p.name}','${p.price}')"
+    style="
+      padding:10px 15px;
+      background:black;
+      color:white;
+      border:none;
+      border-radius:8px;
+      cursor:pointer;
+      margin-top:10px;
+    ">
+      Add to Cart
+    </button>
+
+    <a class="back" href="shop.html">← Back to Shop</a>
   </div>
 `;
-</script>
 
-</body>
-</html>
+/* CART SYSTEM */
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+function addToCart(name, price) {
+  cart.push({name, price});
+  localStorage.setItem("cart", JSON.stringify(cart));
+  alert(name + " added to cart!");
+}
+</script>
