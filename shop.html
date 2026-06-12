@@ -2,17 +2,16 @@
 <html>
 <head>
   <title>Shop - Thorn Keyboards</title>
-  <link rel="stylesheet" href="style.css">
 
   <style>
     * {
-      transition: all 0.2s ease;
       box-sizing: border-box;
+      transition: all 0.2s ease;
+      font-family: Arial;
     }
 
     body {
       margin: 0;
-      font-family: Arial;
       background: white;
     }
 
@@ -33,7 +32,7 @@
     .search-bar {
       width: 60%;
       padding: 12px;
-      margin: 80px auto 20px auto;
+      margin: 80px auto 20px;
       display: block;
       border: 1px solid #ddd;
       border-radius: 10px;
@@ -88,7 +87,7 @@
     }
 
     .cart.open {
-      transform: translateX(0%);
+      transform: translateX(0);
     }
 
     .cart-item {
@@ -99,12 +98,12 @@
     }
 
     .remove-btn {
-      margin-top: 5px;
+      margin-top: 6px;
+      padding: 5px 8px;
+      border: none;
       background: red;
       color: white;
-      border: none;
-      padding: 5px;
-      border-radius: 5px;
+      border-radius: 6px;
       cursor: pointer;
     }
 
@@ -117,8 +116,6 @@
     }
 
     .card {
-      text-decoration: none;
-      color: black;
       background: white;
       border: 1px solid #eee;
       border-radius: 12px;
@@ -128,7 +125,7 @@
     }
 
     .card:hover {
-      transform: scale(1.05);
+      transform: scale(1.03);
     }
 
     .card img {
@@ -138,7 +135,7 @@
     }
 
     .card p {
-      margin: 5px;
+      margin: 6px;
     }
   </style>
 </head>
@@ -153,7 +150,7 @@
   Cart 🛒 (<span id="count">0</span>)
 </div>
 
-<!-- CART -->
+<!-- CART PANEL -->
 <div class="cart" id="cart">
   <h2>Your Cart</h2>
   <div id="cartItems"></div>
@@ -174,49 +171,49 @@
 <!-- GRID -->
 <div class="grid" id="grid">
 
-  <div class="card" data-price="120" onclick="openProduct(1)">
+  <div class="card" data-id="1" data-price="120">
     <img src="https://cdn.pixabay.com/photo/2017/08/05/10/16/keyboard-2589430_1280.jpg">
     <p>RGB Pro X</p>
     <p>$120</p>
   </div>
 
-  <div class="card" data-price="90" onclick="openProduct(2)">
+  <div class="card" data-id="2" data-price="90">
     <img src="https://cdn.pixabay.com/photo/2016/11/29/03/53/keyboard-1869236_1280.jpg">
     <p>Strike Blue</p>
     <p>$90</p>
   </div>
 
-  <div class="card" data-price="75" onclick="openProduct(3)">
+  <div class="card" data-id="3" data-price="75">
     <img src="https://cdn.pixabay.com/photo/2015/01/21/14/14/keyboard-606012_1280.jpg">
     <p>Silent Red</p>
     <p>$75</p>
   </div>
 
-  <div class="card" data-price="110" onclick="openProduct(4)">
+  <div class="card" data-id="4" data-price="110">
     <img src="https://cdn.pixabay.com/photo/2016/03/27/19/36/keyboard-1280538_1280.jpg">
     <p>Black Pro</p>
     <p>$110</p>
   </div>
 
-  <div class="card" data-price="140" onclick="openProduct(5)">
+  <div class="card" data-id="5" data-price="140">
     <img src="https://cdn.pixabay.com/photo/2017/08/10/03/47/keyboard-2619227_1280.jpg">
     <p>Neon Beast</p>
     <p>$140</p>
   </div>
 
-  <div class="card" data-price="60" onclick="openProduct(6)">
+  <div class="card" data-id="6" data-price="60">
     <img src="https://cdn.pixabay.com/photo/2016/11/29/09/32/keyboard-1867893_1280.jpg">
     <p>Starter RGB</p>
     <p>$60</p>
   </div>
 
-  <div class="card" data-price="100" onclick="openProduct(7)">
+  <div class="card" data-id="7" data-price="100">
     <img src="https://cdn.pixabay.com/photo/2015/05/31/10/55/keyboard-791219_1280.jpg">
     <p>Pro White</p>
     <p>$100</p>
   </div>
 
-  <div class="card" data-price="160" onclick="openProduct(8)">
+  <div class="card" data-id="8" data-price="160">
     <img src="https://cdn.pixabay.com/photo/2016/10/18/21/22/keyboard-1756955_1280.jpg">
     <p>Elite Max</p>
     <p>$160</p>
@@ -227,21 +224,28 @@
 <script>
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-/* OPEN PRODUCT PAGE */
-function openProduct(id) {
-  window.location.href = "product.html?id=" + id;
-}
+/* INIT CLICK EVENTS */
+document.querySelectorAll(".card").forEach(card => {
+  card.addEventListener("click", () => {
+    const id = card.dataset.id;
+    window.location.href = "product.html?id=" + id;
+  });
+});
 
-/* ADD CART */
-function addToCart(name, price) {
-  cart.push({name, price});
+/* CART */
+function addToCart(id) {
+  const card = document.querySelector(`[data-id="${id}"]`);
+  const name = card.querySelector("p").innerText;
+  const price = "$" + card.dataset.price;
+
+  cart.push({ name, price });
   localStorage.setItem("cart", JSON.stringify(cart));
   updateCart();
 }
 
-/* REMOVE ITEM */
-function removeItem(index) {
-  cart.splice(index, 1);
+/* REMOVE */
+function removeItem(i) {
+  cart.splice(i, 1);
   localStorage.setItem("cart", JSON.stringify(cart));
   updateCart();
 }
@@ -253,14 +257,12 @@ function updateCart() {
   const box = document.getElementById("cartItems");
   box.innerHTML = "";
 
-  cart.forEach((item, index) => {
+  cart.forEach((item, i) => {
     box.innerHTML += `
       <div class="cart-item">
         <b>${item.name}</b><br>
         ${item.price}
-        <button class="remove-btn" onclick="removeItem(${index})">
-          Remove
-        </button>
+        <button class="remove-btn" onclick="removeItem(${i})">Remove</button>
       </div>
     `;
   });
@@ -273,7 +275,8 @@ function toggleCart() {
 
 /* SEARCH */
 function searchItems() {
-  let val = document.getElementById("search").value.toLowerCase();
+  const val = document.getElementById("search").value.toLowerCase();
+
   document.querySelectorAll(".card").forEach(c => {
     c.style.display = c.innerText.toLowerCase().includes(val)
       ? "block"
@@ -283,22 +286,18 @@ function searchItems() {
 
 /* SORT */
 function sortBy(type) {
-  let grid = document.getElementById("grid");
+  const grid = document.getElementById("grid");
   let cards = Array.from(grid.children);
 
-  if (type === "low") cards.sort((a,b)=>getPrice(a)-getPrice(b));
-  if (type === "high") cards.sort((a,b)=>getPrice(b)-getPrice(a));
+  if (type === "low") cards.sort((a,b)=>a.dataset.price-b.dataset.price);
+  if (type === "high") cards.sort((a,b)=>b.dataset.price-a.dataset.price);
   if (type === "trending") cards.sort(()=>Math.random()-0.5);
 
   grid.innerHTML = "";
   cards.forEach(c => grid.appendChild(c));
 }
 
-function getPrice(card) {
-  return Number(card.dataset.price);
-}
-
-/* INIT */
+/* LOAD */
 updateCart();
 </script>
 
