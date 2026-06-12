@@ -2,14 +2,17 @@ body {
   margin: 0;
   font-family: Arial;
   background: #ffffff;
+  color: #111;
 }
 
-/* SIDEBAR */
+/* SIDE MENU */
 .sidebar {
   position: fixed;
+  left: 0;
+  top: 0;
   width: 200px;
   height: 100vh;
-  background: #f2f2f2;
+  background: #f3f3f3;
   padding: 20px;
 }
 
@@ -18,25 +21,25 @@ body {
   padding: 12px;
   margin-bottom: 10px;
   background: #e6e6e6;
-  border-radius: 8px;
+  border-radius: 10px;
   text-decoration: none;
-  color: black;
+  color: #111;
 }
 
 .sidebar a:hover {
-  background: #d6d6d6;
+  background: #d8d8d8;
 }
 
-/* MAIN */
+/* MAIN AREA */
 .main {
   margin-left: 220px;
-  padding: 20px;
+  padding: 30px;
 }
 
 /* HERO */
 .hero {
+  height: 80vh;
   position: relative;
-  height: 70vh;
 }
 
 .hero img {
@@ -51,12 +54,12 @@ body {
   left: 50%;
   transform: translate(-50%,-50%);
   background: rgba(255,255,255,0.85);
-  padding: 25px;
+  padding: 30px;
   border-radius: 12px;
   text-align: center;
 }
 
-/* BUTTONS */
+/* BUTTON */
 .btn {
   padding: 10px 15px;
   background: black;
@@ -64,25 +67,6 @@ body {
   text-decoration: none;
   display: inline-block;
   margin-top: 10px;
-}
-
-/* CATEGORY BAR */
-.filters {
-  display: flex;
-  gap: 10px;
-  margin: 20px 0;
-}
-
-.filters button {
-  padding: 10px;
-  border: none;
-  background: #e6e6e6;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-.filters button:hover {
-  background: #d6d6d6;
 }
 
 /* GRID */
@@ -93,13 +77,13 @@ body {
 }
 
 .card {
-  border: 1px solid #eee;
-  border-radius: 10px;
-  text-align: center;
   text-decoration: none;
   color: black;
-  overflow: hidden;
   background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #eee;
+  text-align: center;
 }
 
 .card img {
@@ -112,7 +96,7 @@ body {
   margin: 5px;
 }
 
-/* PRODUCT */
+/* PRODUCT PAGE */
 .product {
   display: flex;
   justify-content: center;
