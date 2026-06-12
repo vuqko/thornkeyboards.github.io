@@ -1,10 +1,11 @@
 body {
   margin: 0;
-  font-family: Arial;
+  font-family: Arial, sans-serif;
   background: white;
   color: black;
 }
 
+/* NAV */
 .topbar {
   display: flex;
   justify-content: center;
@@ -20,8 +21,10 @@ body {
 .nav a {
   text-decoration: none;
   color: gray;
+  font-weight: 500;
 }
 
+/* HERO */
 .hero {
   position: relative;
   height: 90vh;
@@ -53,15 +56,18 @@ body {
   text-decoration: none;
 }
 
+/* ABOUT */
 .about {
   text-align: center;
   padding: 60px;
 }
 
+/* TITLE */
 .section-title {
   text-align: center;
 }
 
+/* HOT ROW */
 .hot-row {
   display: flex;
   justify-content: center;
@@ -81,4 +87,43 @@ body {
   height: 120px;
   object-fit: cover;
   border-radius: 10px;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 15px;
+  padding: 20px;
+}
+
+.card {
+  text-align: center;
+  text-decoration: none;
+  color: black;
+}
+
+.card img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* PRODUCT PAGE */
+.product-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  height: 80vh;
+}
+
+.product-page img {
+  width: 400px;
+  border-radius: 12px;
+}
+
+.product-info {
+  max-width: 400px;
 }
