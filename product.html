@@ -3,35 +3,119 @@
 <head>
   <title>Product</title>
   <link rel="stylesheet" href="style.css">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial;
+      background: white;
+    }
+
+    .product-page {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      gap: 50px;
+      padding: 40px;
+    }
+
+    .product-page img {
+      width: 450px;
+      border-radius: 12px;
+      object-fit: cover;
+    }
+
+    .info {
+      max-width: 400px;
+    }
+
+    .price {
+      font-size: 24px;
+      margin-top: 10px;
+    }
+
+    .back {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 15px;
+      background: black;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="main product" id="p"></div>
+<div class="product-page" id="product"></div>
 
 <script>
 const products = {
-  1:{name:"RGB Pro X",price:"$120",img:"https://images.unsplash.com/photo-1595044426077-d36d9236d54a",desc:"RGB gaming keyboard"},
-  2:{name:"Strike Blue",price:"$90",img:"https://images.unsplash.com/photo-1629429408209-1f2b4b7b0f4f",desc:"Fast clicky switches"},
-  3:{name:"Silent Red",price:"$75",img:"https://images.unsplash.com/photo-1612810806695-30f7c9c6b1a8",desc:"Silent gaming keyboard"},
-  4:{name:"Black Pro",price:"$110",img:"https://images.unsplash.com/photo-1616788494686-4c7d3b8d1f63",desc:"Stealth design"},
-  5:{name:"Neon Beast",price:"$140",img:"https://images.unsplash.com/photo-1629429407815-0b7c9d4f2c88",desc:"RGB beast keyboard"},
-  6:{name:"Starter RGB",price:"$60",img:"https://images.unsplash.com/photo-1618354691373-d851c5c3c5b1",desc:"Beginner keyboard"},
-  7:{name:"Pro White",price:"$100",img:"https://images.unsplash.com/photo-1611078489935-0c1a1f0b4d9c",desc:"Clean white RGB"},
-  8:{name:"Elite Max",price:"$160",img:"https://images.unsplash.com/photo-1608043152269-423dbba4e7e1",desc:"Top esports keyboard"}
+  1: {
+    name: "RGB Pro X",
+    price: "$120",
+    img: "https://images.unsplash.com/photo-1595044426077-d36d9236d54a",
+    desc: "High-performance RGB mechanical gaming keyboard built for speed and accuracy."
+  },
+  2: {
+    name: "Strike Blue",
+    price: "$90",
+    img: "https://images.unsplash.com/photo-1629429408209-1f2b4b7b0f4f",
+    desc: "Clicky blue switches designed for responsive typing and gaming."
+  },
+  3: {
+    name: "Silent Red",
+    price: "$75",
+    img: "https://images.unsplash.com/photo-1612810806695-30f7c9c6b1a8",
+    desc: "Ultra-quiet red switches for smooth and silent gameplay."
+  },
+  4: {
+    name: "Black Pro",
+    price: "$110",
+    img: "https://images.unsplash.com/photo-1616788494686-4c7d3b8d1f63",
+    desc: "Minimal black professional gaming keyboard with premium build."
+  },
+  5: {
+    name: "Neon Beast",
+    price: "$140",
+    img: "https://images.unsplash.com/photo-1629429407815-0b7c9d4f2c88",
+    desc: "Full RGB beast keyboard with extreme lighting effects."
+  },
+  6: {
+    name: "Starter RGB",
+    price: "$60",
+    img: "https://images.unsplash.com/photo-1618354691373-d851c5c3c5b1",
+    desc: "Budget-friendly RGB keyboard perfect for beginners."
+  },
+  7: {
+    name: "Pro White",
+    price: "$100",
+    img: "https://images.unsplash.com/photo-1611078489935-0c1a1f0b4d9c",
+    desc: "Clean white RGB keyboard for aesthetic setups."
+  },
+  8: {
+    name: "Elite Max",
+    price: "$160",
+    img: "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1",
+    desc: "Top-tier esports keyboard built for competitive gaming."
+  }
 };
 
-const id = new URLSearchParams(location.search).get("id");
+const id = new URLSearchParams(window.location.search).get("id");
 const p = products[id];
 
-document.getElementById("p").innerHTML = `
-<img src="${p.img}">
-<div>
-<h1>${p.name}</h1>
-<p>${p.desc}</p>
-<h2>${p.price}</h2>
-<a href="shop.html">Back</a>
-</div>
+document.getElementById("product").innerHTML = `
+  <img src="${p.img}">
+  
+  <div class="info">
+    <h1>${p.name}</h1>
+    <p>${p.desc}</p>
+    <div class="price">${p.price}</div>
+    
+    <a class="back" href="shop.html">Back to Shop</a>
+  </div>
 `;
 </script>
 
